@@ -204,6 +204,9 @@ include("verificationLogin.php");
 										$('#adresseMed').removeClass("alert-validate");
 										$('#adresseMed').addClass("true-validate");
 									}
+									if(data.success==1){
+										alert ("success");
+									}
 								}
 								});									
 						});

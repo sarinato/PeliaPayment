@@ -9,27 +9,33 @@
     $numMed = $_POST['numMed'];
     $emailMed = $_POST['emailMed'];
     $adresseMed = $_POST['adresseMed'];
+    $error = false;
     
     if(empty($nomMed)){
-        $dataResult["nomMed"] = 1;        
+        $dataResult["nomMed"] = 1;
+        $error = true;      
     }
     if(empty($SpecMed)){
-        $dataResult["SpecMed"] = 1;        
+        $dataResult["SpecMed"] = 1; 
+        $error = true;       
     }
     if(empty($numMed)){
         $dataResult["numMed"] = 1;        
+        $error = true;
     }
     if(empty($emailMed)){
-        $dataResult["emailMed"] = 1;        
+        $dataResult["emailMed"] = 1; 
+        $error = true;       
     }
     if(empty($adresseMed)){
-        $dataResult["adresseMed"] = 1;        
+        $dataResult["adresseMed"] = 1;
+        $error = true;       
     }    
 
     $id_user = $_SESSION['id'];
-        if (isset($_POST['submit'])){
-            print_r($_POST);
-            echo "<br> ".$id_user;
+    if ($error==false){
+            // print_r($_POST);
+            // echo "<br> ".$id_user;
             $nom_medecin=$_POST['nomMed'];
             $specialite=$_POST['SpecMed'];
             $numero_telephone=$_POST['numMed'];
@@ -47,7 +53,7 @@
                     'email' => $email,
                     'adresse' => $adresse
             ))){
-                echo "hello word";
+                $dataResult["success"] = 1;
             }else{
                 echo "khawartiha al9owad";
             }
